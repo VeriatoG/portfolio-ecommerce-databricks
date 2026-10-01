@@ -1,0 +1,1258 @@
+{
+  "datasets": [
+    {
+      "name": "vendas",
+      "displayName": "Vendas",
+      "config": {
+        "version": "1.1",
+        "source": "projetoportfolio.gold.vendas_temporais",
+        "dimensions": [
+          {
+            "name": "data",
+            "expr": "data",
+            "displayName": "Data",
+            "format": {
+              "type": "date",
+              "dateFormat": "year_month_day"
+            }
+          },
+          {
+            "name": "canal_venda",
+            "expr": "INITCAP(REPLACE(canal_venda, '_', ' '))",
+            "displayName": "Canal de Venda"
+          }
+        ],
+        "measures": [
+          {
+            "name": "receita",
+            "expr": "SUM(receita)",
+            "displayName": "Receita",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "num_vendas",
+            "expr": "COUNT(1)",
+            "displayName": "Numero de Vendas"
+          }
+        ]
+      }
+    },
+    {
+      "name": "clientes",
+      "displayName": "Clientes",
+      "config": {
+        "version": "1.1",
+        "source": "projetoportfolio.gold.clientes_segmentacao",
+        "dimensions": [
+          {
+            "name": "id_cliente",
+            "expr": "id_cliente",
+            "displayName": "ID Cliente"
+          },
+          {
+            "name": "nome_cliente",
+            "expr": "nome_cliente",
+            "displayName": "Nome do Cliente"
+          },
+          {
+            "name": "regiao",
+            "expr": "regiao",
+            "displayName": "Regiao"
+          },
+          {
+            "name": "estado",
+            "expr": "estado",
+            "displayName": "Estado"
+          },
+          {
+            "name": "segmento",
+            "expr": "segmento",
+            "displayName": "Segmento"
+          }
+        ],
+        "measures": [
+          {
+            "name": "num_clientes",
+            "expr": "COUNT(id_cliente)",
+            "displayName": "Numero de Clientes"
+          },
+          {
+            "name": "ticket_medio",
+            "expr": "AVG(ticket_medio)",
+            "displayName": "Ticket Medio",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_gasto",
+            "expr": "SUM(total_gasto)",
+            "displayName": "Total Gasto",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_compras",
+            "expr": "SUM(total_compras)",
+            "displayName": "Total de Compras"
+          }
+        ]
+      }
+    },
+    {
+      "name": "preco_competidores",
+      "displayName": "Preço dos Concorrentes",
+      "config": {
+        "version": "1.1",
+        "source": "projetoportfolio.gold.precos_competitividade",
+        "dimensions": [
+          {
+            "name": "id_produto",
+            "expr": "id_produto",
+            "displayName": "ID Produto"
+          },
+          {
+            "name": "nome_produto",
+            "expr": "nome_produto",
+            "displayName": "Nome do Produto"
+          },
+          {
+            "name": "marca",
+            "expr": "marca",
+            "displayName": "Marca"
+          },
+          {
+            "name": "mais_caro_que_todos",
+            "expr": "mais_caro_que_todos",
+            "displayName": "Mais Caro Que Todos"
+          }
+        ],
+        "measures": [
+          {
+            "name": "preco_nosso",
+            "expr": "AVG(preco_nosso)",
+            "displayName": "Preco Nosso",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "preco_min_conc",
+            "expr": "MIN(preco_min_conc)",
+            "displayName": "Preco Minimo Concorrente",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "preco_max_conc",
+            "expr": "MAX(preco_max_conc)",
+            "displayName": "Preco Maximo Concorrente",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "preco_medio_conc",
+            "expr": "AVG(preco_medio_conc)",
+            "displayName": "Preco Medio Concorrente",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_concorrentes",
+            "expr": "SUM(total_concorrentes)",
+            "displayName": "Total de Concorrentes"
+          }
+        ]
+      }
+    },
+    {
+      "name": "produtos",
+      "displayName": "Produtos",
+      "config": {
+        "version": "1.1",
+        "source": "projetoportfolio.gold.vendas_produtos",
+        "dimensions": [
+          {
+            "name": "id_produto",
+            "expr": "id_produto",
+            "displayName": "ID Produto"
+          },
+          {
+            "name": "nome_produto",
+            "expr": "nome_produto",
+            "displayName": "Nome do Produto"
+          },
+          {
+            "name": "categoria",
+            "expr": "categoria",
+            "displayName": "Categoria"
+          },
+          {
+            "name": "marca",
+            "expr": "marca",
+            "displayName": "Marca"
+          }
+        ],
+        "measures": [
+          {
+            "name": "receita",
+            "expr": "SUM(receita)",
+            "displayName": "Receita",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_vendas",
+            "expr": "SUM(total_vendas)",
+            "displayName": "Total de Vendas"
+          }
+        ]
+      }
+    }
+  ],
+  "relationshipGraphs": [
+    {
+      "sources": [
+        {
+          "name": "Vendas",
+          "datasetName": "vendas"
+        },
+        {
+          "name": "Clientes",
+          "datasetName": "clientes"
+        },
+        {
+          "name": "Preo_dos_Concorrentes",
+          "datasetName": "preco_competidores"
+        },
+        {
+          "name": "Produtos",
+          "datasetName": "produtos"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "relationship_2",
+          "from": "Preo_dos_Concorrentes",
+          "to": "Produtos",
+          "on": "`Preo_dos_Concorrentes`.`id_produto` = `Produtos`.`id_produto`",
+          "cardinality": "CARDINALITY_MANY_TO_ONE"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "ef705aa6",
+      "displayName": "Visão Geral de Vendas",
+      "layout": [
+        {
+          "widget": {
+            "name": "titulo",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Sales Commercial Dashboard"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_receita",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Revenue (R$)"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_vendas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Vendas__num_vendas)",
+                      "expression": "MEASURE(`Vendas`.`num_vendas`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Number of Sales"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Vendas__num_vendas)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_clientes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Clientes__num_clientes)",
+                      "expression": "MEASURE(`Clientes`.`num_clientes`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Unique Customers"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Clientes__num_clientes)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "line_tempo",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "monthly(Vendas__data)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `Vendas`.`data`)"
+                    },
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue Over Time"
+              },
+              "version": 3,
+              "mark": {
+                "colors": [
+                  "#002D62"
+                ]
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(Vendas__data)",
+                  "displayName": "Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total Revenue (R$)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 9,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_ticket",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Clientes__ticket_medio)",
+                      "expression": "MEASURE(`Clientes`.`ticket_medio`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Average Ticket (R$)"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Clientes__ticket_medio)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_categoria",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Produtos__categoria",
+                      "expression": "`Produtos`.`categoria`"
+                    },
+                    {
+                      "name": "measure(Produtos__receita)",
+                      "expression": "MEASURE(`Produtos`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Product Category"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Produtos__categoria",
+                  "displayName": "Category",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Produtos__receita)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total Revenue (R$)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Produtos__categoria",
+                  "displayName": "Category",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "Moda",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "Áudio",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "Acessórios",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "Casa",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "Cozinha",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": "Beleza",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "Eletrônicos",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "Informática",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "Games",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "Esporte",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": null,
+                        "color": "#D1D5DB"
+                      }
+                    ]
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "table_top_produtos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Produtos__categoria",
+                      "expression": "`Produtos`.`categoria`"
+                    },
+                    {
+                      "name": "Produtos__nome_produto",
+                      "expression": "`Produtos`.`nome_produto`"
+                    },
+                    {
+                      "name": "measure(Produtos__total_vendas)",
+                      "expression": "MEASURE(`Produtos`.`total_vendas`)"
+                    },
+                    {
+                      "name": "measure(Produtos__receita)",
+                      "expression": "MEASURE(`Produtos`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "MEASURE(`Produtos`.`receita`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Top Products by Revenue"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Produtos__categoria",
+                    "headerAlignment": "left",
+                    "displayName": "Category"
+                  },
+                  {
+                    "fieldName": "Produtos__nome_produto",
+                    "headerAlignment": "left",
+                    "useForSearch": true,
+                    "displayName": "Product Name"
+                  },
+                  {
+                    "fieldName": "measure(Produtos__total_vendas)",
+                    "headerAlignment": "right",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact",
+                      "decimalPlaces": {
+                        "type": "max",
+                        "places": 2
+                      }
+                    },
+                    "displayName": "Total Qty"
+                  },
+                  {
+                    "fieldName": "measure(Produtos__receita)",
+                    "headerAlignment": "right",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact",
+                      "decimalPlaces": {
+                        "type": "max",
+                        "places": 2
+                      }
+                    },
+                    "displayName": "Total Revenue (R$)"
+                  }
+                ],
+                "rowOrder": [
+                  {
+                    "by": "column-reversed",
+                    "field": {
+                      "index": 3
+                    }
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 14,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_canal",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Vendas__canal_venda",
+                      "expression": "`Vendas`.`canal_venda`"
+                    },
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Sales Channel"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Vendas__canal_venda",
+                  "displayName": "Sales Channel",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total Revenue (R$)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Vendas__canal_venda",
+                  "displayName": "Sales Channel",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "Ecommerce",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "Loja Fisica",
+                        "color": "#002D62"
+                      }
+                    ]
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "map_estado",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Clientes__estado",
+                      "expression": "`Clientes`.`estado`"
+                    },
+                    {
+                      "name": "measure(Clientes__total_gasto)",
+                      "expression": "MEASURE(`Clientes`.`total_gasto`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by State"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Clientes__estado",
+                  "displayName": "State",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Clientes__total_gasto)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total Revenue (R$)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Clientes__estado",
+                  "displayName": "State",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "AM",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "TO",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "PA",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "AC",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "RS",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": "SP",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "MT",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "GO",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "MG",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "CE",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": "SE",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "AL",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "MA",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "MS",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "ES",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": "RR",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "DF",
+                        "color": "#002D62"
+                      },
+                      {
+                        "value": "RJ",
+                        "color": "#0066B3"
+                      },
+                      {
+                        "value": "PB",
+                        "color": "#00A3E0"
+                      },
+                      {
+                        "value": "PE",
+                        "color": "#FFB3BA"
+                      },
+                      {
+                        "value": "AP",
+                        "color": "#E63946"
+                      },
+                      {
+                        "value": "PR",
+                        "color": "#002D62"
+                      }
+                    ]
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 14,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "subtitulo",
+            "multilineTextboxSpec": {
+              "lines": [
+                "Commercial overview of e-commerce sales: revenue, volume, channels, categories, geography, and top products."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 1
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "global_filters",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_periodo",
+            "queries": [
+              {
+                "name": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bceee15c491c0e6c12d834c97_data",
+                "query": {
+                  "datasetName": "vendas",
+                  "fields": [
+                    {
+                      "name": "data",
+                      "expression": "`data`"
+                    },
+                    {
+                      "name": "data_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Period"
+              },
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "data",
+                    "queryName": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bceee15c491c0e6c12d834c97_data"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 4,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_canal",
+            "queries": [
+              {
+                "name": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bceee15c491c0e6c12d834c97_canal_venda",
+                "query": {
+                  "datasetName": "vendas",
+                  "fields": [
+                    {
+                      "name": "canal_venda",
+                      "expression": "`canal_venda`"
+                    },
+                    {
+                      "name": "canal_venda_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Sales Channel"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "canal_venda",
+                    "queryName": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bceee15c491c0e6c12d834c97_canal_venda"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 4,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_categoria",
+            "queries": [
+              {
+                "name": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bd2821c32a58a4d7affcf76aa_categoria",
+                "query": {
+                  "datasetName": "produtos",
+                  "fields": [
+                    {
+                      "name": "categoria",
+                      "expression": "`categoria`"
+                    },
+                    {
+                      "name": "categoria_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Product Category"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "categoria",
+                    "queryName": "dashboards/01f1b86b74561f31b2db21114d95c1d5/datasets/01f1b86bd2821c32a58a4d7affcf76aa_categoria"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 0,
+            "width": 4,
+            "height": 1
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "visualizationColors": [
+        "#264653",
+        "#2A9D8F",
+        "#E9C46A",
+        "#F4A261",
+        "#E76F51",
+        "#577590",
+        "#43AA8B",
+        "#F8961E"
+      ],
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED",
+      "widgetPadding": 12,
+      "widgetCornerRadius": 12,
+      "widgetShadow": 10,
+      "fontSettings": {
+        "base": {
+          "fontFamily": "Inter",
+          "fontSize": 14
+        },
+        "widgetTitle": {
+          "fontFamily": "Montserrat",
+          "fontSize": 18,
+          "fontWeight": 600
+        },
+        "fieldTitle": {
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": 600
+        },
+        "fieldValue": {
+          "fontFamily": "Inter",
+          "fontSize": 11
+        }
+      }
+    },
+    "applyModeEnabled": false
+  }
+}

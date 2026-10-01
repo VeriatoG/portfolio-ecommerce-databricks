@@ -1,0 +1,1232 @@
+{
+  "datasets": [
+    {
+      "name": "produtos",
+      "displayName": "Produtos",
+      "config": {
+        "source": "projetoportfolio.gold.vendas_produtos",
+        "measures": [
+          {
+            "name": "receita",
+            "expr": "SUM(receita)",
+            "displayName": "Receita Total",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          },
+          {
+            "name": "total_vendas",
+            "expr": "SUM(total_vendas)",
+            "displayName": "Total de Vendas",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          }
+        ],
+        "version": "1.1",
+        "comment": "Vendas por produto do projeto portfolio - gold layer",
+        "dimensions": [
+          {
+            "name": "id_produto",
+            "expr": "id_produto",
+            "displayName": "ID Produto"
+          },
+          {
+            "name": "nome_produto",
+            "expr": "nome_produto",
+            "displayName": "Nome do Produto"
+          },
+          {
+            "name": "categoria",
+            "expr": "COALESCE(categoria, 'Outros')",
+            "displayName": "Categoria"
+          },
+          {
+            "name": "marca",
+            "expr": "marca",
+            "displayName": "Marca"
+          }
+        ]
+      }
+    },
+    {
+      "name": "vendas",
+      "displayName": "Vendas",
+      "config": {
+        "source": "projetoportfolio.gold.vendas_temporais",
+        "measures": [
+          {
+            "name": "receita",
+            "expr": "SUM(receita)",
+            "displayName": "Receita Total",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          },
+          {
+            "name": "num_vendas",
+            "expr": "COUNT(1)",
+            "displayName": "Total de Vendas",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          }
+        ],
+        "version": "1.1",
+        "comment": "Fato de vendas temporal do projeto portfolio - gold layer",
+        "dimensions": [
+          {
+            "name": "data",
+            "expr": "data",
+            "displayName": "Data da Venda",
+            "format": {
+              "type": "date",
+              "dateFormat": "year_month_day"
+            }
+          },
+          {
+            "name": "canal_venda",
+            "expr": "INITCAP(REPLACE(canal_venda, '_', ' '))",
+            "displayName": "Canal de Venda"
+          }
+        ]
+      }
+    },
+    {
+      "name": "preco_competidores",
+      "displayName": "Preço Concorrentes",
+      "config": {
+        "source": "projetoportfolio.gold.precos_competitividade",
+        "measures": [
+          {
+            "name": "preco_nosso",
+            "expr": "AVG(preco_nosso)",
+            "displayName": "Nosso Preço",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "max",
+                "places": 1.0
+              }
+            }
+          },
+          {
+            "name": "preco_min_conc",
+            "expr": "MIN(preco_min_conc)",
+            "displayName": "Preço Mínimo Concorrentes",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "max",
+                "places": 1.0
+              }
+            }
+          },
+          {
+            "name": "preco_max_conc",
+            "expr": "MAX(preco_max_conc)",
+            "displayName": "Preço Máximo Concorrentes",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "max",
+                "places": 1.0
+              }
+            }
+          },
+          {
+            "name": "preco_medio_conc",
+            "expr": "AVG(preco_medio_conc)",
+            "displayName": "Preço Médio Concorrentes",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "max",
+                "places": 1.0
+              }
+            }
+          },
+          {
+            "name": "total_concorrentes",
+            "expr": "SUM(total_concorrentes)",
+            "displayName": "Total de Concorrentes",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          }
+        ],
+        "version": "1.1",
+        "comment": "Preços de concorrentes do projeto portfolio - gold layer",
+        "dimensions": [
+          {
+            "name": "id_produto",
+            "expr": "id_produto",
+            "displayName": "ID Produto"
+          },
+          {
+            "name": "nome_produto",
+            "expr": "nome_produto",
+            "displayName": "Nome do Produto"
+          },
+          {
+            "name": "marca",
+            "expr": "marca",
+            "displayName": "Marca"
+          },
+          {
+            "name": "mais_caro_que_todos",
+            "expr": "mais_caro_que_todos",
+            "displayName": "Mais Caro que Todos"
+          }
+        ]
+      }
+    },
+    {
+      "name": "clientes",
+      "displayName": "Clientes",
+      "config": {
+        "source": "projetoportfolio.gold.clientes_segmentacao",
+        "measures": [
+          {
+            "name": "num_clientes",
+            "expr": "COUNT(id_cliente)",
+            "displayName": "Clientes Ativos",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          },
+          {
+            "name": "ticket_medio",
+            "expr": "AVG(ticket_medio)",
+            "displayName": "Ticket Médio",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          },
+          {
+            "name": "total_gasto",
+            "expr": "SUM(total_gasto)",
+            "displayName": "Total Gasto",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          },
+          {
+            "name": "total_compras",
+            "expr": "SUM(total_compras)",
+            "displayName": "Total de Compras",
+            "format": {
+              "type": "number",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            }
+          }
+        ],
+        "version": "1.1",
+        "comment": "Dimensão de clientes segmentados do projeto portfolio - gold layer",
+        "dimensions": [
+          {
+            "name": "id_cliente",
+            "expr": "id_cliente",
+            "displayName": "ID Cliente"
+          },
+          {
+            "name": "nome_cliente",
+            "expr": "nome_cliente",
+            "displayName": "Nome do Cliente"
+          },
+          {
+            "name": "regiao",
+            "expr": "regiao",
+            "displayName": "Região"
+          },
+          {
+            "name": "estado",
+            "expr": "estado",
+            "displayName": "Estado"
+          },
+          {
+            "name": "segmento",
+            "expr": "segmento",
+            "displayName": "Segmento"
+          }
+        ]
+      }
+    },
+    {
+      "name": "comparativo_precos",
+      "displayName": "Comparativo Precos",
+      "config": {
+        "source": "SELECT 'Nosso Preço' AS fonte_preco, preco_nosso AS preco, id_produto FROM projetoportfolio.gold.precos_competitividade\nUNION ALL\nSELECT 'Concorrentes (Médio)' AS fonte_preco, preco_medio_conc AS preco, id_produto FROM projetoportfolio.gold.precos_competitividade\n",
+        "measures": [
+          {
+            "name": "preco_medio",
+            "expr": "AVG(preco)",
+            "displayName": "Preço Médio (R$)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "BRL",
+              "abbreviation": "compact",
+              "decimalPlaces": {
+                "type": "max",
+                "places": 1.0
+              }
+            }
+          }
+        ],
+        "version": "1.1",
+        "comment": "Comparativo de preços concorrentes vs nosso preço - gold layer",
+        "dimensions": [
+          {
+            "name": "fonte_preco",
+            "expr": "fonte_preco",
+            "displayName": "Fonte do Preço"
+          },
+          {
+            "name": "id_produto",
+            "expr": "id_produto",
+            "displayName": "ID Produto"
+          }
+        ]
+      }
+    },
+    {
+      "name": "top_produtos_ord",
+      "displayName": "Top Produtos Ordenado",
+      "queryLines": [
+        "SELECT\n",
+        "  INITCAP(REPLACE(nome_produto, '_', ' ')) AS nome_produto,\n",
+        "  CASE\n",
+        "    WHEN receita >= 1000000000 THEN CONCAT(CAST(ROUND(receita / 1000000000, 1) AS STRING), 'B')\n",
+        "    WHEN receita >= 1000000 THEN CONCAT(CAST(ROUND(receita / 1000000, 1) AS STRING), 'M')\n",
+        "    WHEN receita >= 1000 THEN CONCAT(CAST(ROUND(receita / 1000, 1) AS STRING), 'K')\n",
+        "    ELSE CAST(ROUND(receita) AS STRING)\n",
+        "  END AS receita,\n",
+        "  CASE\n",
+        "    WHEN\n",
+        "      total_vendas >= 1000000000\n",
+        "    THEN\n",
+        "      CONCAT(CAST(ROUND(total_vendas / 1000000000, 1) AS STRING), 'B')\n",
+        "    WHEN total_vendas >= 1000000 THEN CONCAT(CAST(ROUND(total_vendas / 1000000, 1) AS STRING), 'M')\n",
+        "    WHEN total_vendas >= 1000 THEN CONCAT(CAST(ROUND(total_vendas / 1000, 1) AS STRING), 'K')\n",
+        "    ELSE CAST(total_vendas AS STRING)\n",
+        "  END AS quantidade_total\n",
+        "FROM\n",
+        "  (\n",
+        "    SELECT\n",
+        "      nome_produto,\n",
+        "      receita,\n",
+        "      total_vendas\n",
+        "    FROM\n",
+        "      projetoportfolio.gold.vendas_produtos\n",
+        "  ) t\n",
+        "ORDER BY\n",
+        "  t.receita DESC"
+      ],
+      "catalog": "projetoportfolio",
+      "schema": "bronze"
+    }
+  ],
+  "relationshipGraphs": [
+    {
+      "sources": [
+        {
+          "name": "Produtos",
+          "datasetName": "produtos"
+        },
+        {
+          "name": "Vendas",
+          "datasetName": "vendas"
+        },
+        {
+          "name": "Preo_Concorrentes",
+          "datasetName": "preco_competidores"
+        },
+        {
+          "name": "Clientes",
+          "datasetName": "clientes"
+        },
+        {
+          "name": "Comparativo_Precos",
+          "datasetName": "comparativo_precos"
+        },
+        {
+          "name": "Top_Produtos_Ordenado",
+          "datasetName": "top_produtos_ord"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "relationship_2",
+          "from": "Preo_Concorrentes",
+          "to": "Produtos",
+          "on": "`Preo_Concorrentes`.`id_produto` = `Produtos`.`id_produto`",
+          "cardinality": "CARDINALITY_MANY_TO_ONE"
+        },
+        {
+          "name": "relationship_3",
+          "from": "Comparativo_Precos",
+          "to": "Produtos",
+          "on": "`Comparativo_Precos`.`id_produto` = `Produtos`.`id_produto`",
+          "cardinality": "CARDINALITY_MANY_TO_ONE"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "9cb865d0",
+      "displayName": "Overview",
+      "layout": [
+        {
+          "widget": {
+            "name": "counter_receita",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Revenue"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_ticket",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Clientes__ticket_medio)",
+                      "expression": "MEASURE(`Clientes`.`ticket_medio`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Average Ticket"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Clientes__ticket_medio)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_vendas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Vendas__num_vendas)",
+                      "expression": "MEASURE(`Vendas`.`num_vendas`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Sales (qty)"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Vendas__num_vendas)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_clientes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Clientes__num_clientes)",
+                      "expression": "MEASURE(`Clientes`.`num_clientes`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Active Customers (qty)"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Clientes__num_clientes)",
+                  "rowNumber": 0,
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 2,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "line_evolucao",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "monthly(Vendas__data)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `Vendas`.`data`)"
+                    },
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue Evolution (R$)"
+              },
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(Vendas__data)",
+                  "displayName": "Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "displayName": "Revenue",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_canal",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Vendas__receita)",
+                      "expression": "MEASURE(`Vendas`.`receita`)"
+                    },
+                    {
+                      "name": "Vendas__canal_venda",
+                      "expression": "`Vendas`.`canal_venda`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Channel (R$)"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Vendas__receita)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Revenue"
+                },
+                "color": {
+                  "fieldName": "Vendas__canal_venda",
+                  "displayName": "Sales Channel",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "color": "#2C3E50",
+                        "value": "Ecommerce"
+                      },
+                      {
+                        "color": "#BDC3C7",
+                        "value": "Loja Fisica"
+                      }
+                    ]
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 5,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_concorrente",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Comparativo_Precos__fonte_preco",
+                      "expression": "`Comparativo_Precos`.`fonte_preco`"
+                    },
+                    {
+                      "name": "measure(Comparativo_Precos__preco_medio)",
+                      "expression": "MEASURE(`Comparativo_Precos`.`preco_medio`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "MEASURE(`Comparativo_Precos`.`preco_medio`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Price: Competitors vs Ours (R$)"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Comparativo_Precos__fonte_preco",
+                  "displayName": "Source",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "measure-reversed",
+                      "measure": {
+                        "fieldName": "measure(Comparativo_Precos__preco_medio)"
+                      }
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Comparativo_Precos__preco_medio)",
+                  "displayName": "Average Price",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Comparativo_Precos__fonte_preco",
+                  "displayName": "Source",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 19,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_estado",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Clientes__estado",
+                      "expression": "`Clientes`.`estado`"
+                    },
+                    {
+                      "name": "measure(Clientes__total_gasto)",
+                      "expression": "MEASURE(`Clientes`.`total_gasto`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "MEASURE(`Clientes`.`total_gasto`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by State (R$)"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Clientes__estado",
+                  "displayName": "State",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "measure-reversed",
+                      "measure": {
+                        "fieldName": "measure(Clientes__total_gasto)"
+                      }
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Clientes__total_gasto)",
+                  "displayName": "Total Spent",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Clientes__estado",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 12,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "table_top_produtos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Top_Produtos_Ordenado__nome_produto",
+                      "expression": "`Top_Produtos_Ordenado`.`nome_produto`"
+                    },
+                    {
+                      "name": "Top_Produtos_Ordenado__receita",
+                      "expression": "`Top_Produtos_Ordenado`.`receita`"
+                    },
+                    {
+                      "name": "Top_Produtos_Ordenado__quantidade_total",
+                      "expression": "`Top_Produtos_Ordenado`.`quantidade_total`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Top Products (R$)"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Top_Produtos_Ordenado__nome_produto",
+                    "headerAlignment": "left",
+                    "useForSearch": true
+                  },
+                  {
+                    "fieldName": "Top_Produtos_Ordenado__receita",
+                    "headerAlignment": "right"
+                  },
+                  {
+                    "fieldName": "Top_Produtos_Ordenado__quantidade_total",
+                    "headerAlignment": "right"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 19,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "receita_categoria_final",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Produtos__categoria",
+                      "expression": "`Produtos`.`categoria`"
+                    },
+                    {
+                      "name": "measure(Produtos__receita)",
+                      "expression": "MEASURE(`Produtos`.`receita`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "MEASURE(`Produtos`.`receita`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Category (R$)"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Produtos__categoria",
+                  "displayName": "Category",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "measure-reversed",
+                      "measure": {
+                        "fieldName": "measure(Produtos__receita)"
+                      }
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Produtos__receita)",
+                  "displayName": "Revenue",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Produtos__categoria",
+                  "displayName": "Category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "resumo_executivo",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Sales Management Dashboard\n",
+                "Strategic indicators for revenue, average ticket, sales volume, and customer base. Use global filters to segment by period, category, and state."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "global_filters",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_data",
+            "queries": [
+              {
+                "name": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb57269e1423b19b14af140aa383_data",
+                "query": {
+                  "datasetName": "vendas",
+                  "fields": [
+                    {
+                      "name": "data",
+                      "expression": "`data`"
+                    },
+                    {
+                      "name": "data_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Sales Period"
+              },
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "data",
+                    "queryName": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb57269e1423b19b14af140aa383_data"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_categoria",
+            "queries": [
+              {
+                "name": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb5725d51e838f0777ef06aeef31_categoria",
+                "query": {
+                  "datasetName": "produtos",
+                  "fields": [
+                    {
+                      "name": "categoria",
+                      "expression": "`categoria`"
+                    },
+                    {
+                      "name": "categoria_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Category"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "categoria",
+                    "queryName": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb5725d51e838f0777ef06aeef31_categoria"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_estado",
+            "queries": [
+              {
+                "name": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb5727bc1bd1bb7543f688c17c96_estado",
+                "query": {
+                  "datasetName": "clientes",
+                  "fields": [
+                    {
+                      "name": "estado",
+                      "expression": "`estado`"
+                    },
+                    {
+                      "name": "estado_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "State"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "estado",
+                    "queryName": "dashboards/01f1bb542faa1f77a6cdac3f773f8cb1/datasets/01f1bb5727bc1bd1bb7543f688c17c96_estado"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "visualizationColors": [
+        "#2C3E50",
+        "#34495E",
+        "#5D6D7E",
+        "#85929E",
+        "#95A5A6",
+        "#BDC3C7",
+        "#F39C12",
+        "#E67E22"
+      ],
+      "widgetHeaderAlignment": "LEFT",
+      "widgetPadding": 12,
+      "widgetMargin": 8,
+      "widgetCornerRadius": 8,
+      "widgetShadow": 15
+    },
+    "applyModeEnabled": false
+  }
+}
