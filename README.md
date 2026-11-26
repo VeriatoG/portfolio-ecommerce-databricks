@@ -2,23 +2,16 @@
 
 End-to-end analytics project using Databricks to explore e-commerce sales, customer behavior, product performance, and competitor pricing.
 
-The project follows a Medallion Architecture and combines data transformation, SQL and Python analysis, business intelligence dashboards, and AI-powered analytics.
+The project uses a Medallion Architecture to transform source data into business-ready datasets, analyze performance with SQL and Python, and present insights through Databricks dashboards.
 
 > **Language note:** The documentation is in English. The dataset, table names, column names, and business terminology are in Portuguese, reflecting the original data context.
-
-## Project Highlights
-
-- Data ingestion and transformation using Bronze, Silver, and Gold layers.
-- SQL and Python analysis of sales, customers, and products.
-- Commercial and management dashboards with business KPIs.
-- Databricks Genie agent for AI-powered analytics.
 
 ## Data Workflow
 
 1. **Bronze — Data Ingestion:** Load and organize the original source data.
 2. **Silver — Data Preparation:** Clean, transform, and validate the data.
 3. **Gold — Analytical Data:** Prepare business-ready datasets for analysis and reporting.
-4. **Analysis:** Explore business questions using SQL and Python.
+4. **Analysis:** Explore sales, customer, and product data using SQL and Python.
 5. **Business Intelligence:** Present KPIs and trends through Databricks dashboards.
 
 ## Dashboards
@@ -26,16 +19,14 @@ The project follows a Medallion Architecture and combines data transformation, S
 ### Commercial Sales Dashboard
 
 Provides a commercial view of sales performance, including:
-
-- Total revenue, sales volume, customer count, and average ticket.
+- Revenue, sales volume, customer count, and average ticket.
 - Revenue by product category, sales channel, state, and time.
 - Top-performing products by revenue.
 
 ### Sales Management Dashboard
 
 Provides a management-level view of business performance, including:
-
-- Total revenue, average ticket, sales volume, and active customers.
+- Revenue, average ticket, sales volume, and active customers.
 - Revenue trends and breakdowns by channel, category, and state.
 - Comparison between our prices and competitor prices.
 - Product-level revenue and quantity.
@@ -51,24 +42,9 @@ Both dashboards include filters to explore the data across periods, categories, 
 - How do our prices compare with competitor prices?
 - Which KPIs can support commercial and management decisions?
 
-## Data Sources
-
-The project uses e-commerce data related to:
-
-- Sales
-- Products
-- Customers
-- Competitor prices
-
-The datasets are processed through the Bronze, Silver, and Gold layers before being used for analysis and dashboards.
-
 ## Technologies
 
 Databricks · SQL · Python · PySpark · Databricks Genie
-
-## Repository Structure
-
-The repository contains notebooks for data ingestion, transformation, SQL and Python analysis, and dashboard development.
 
 ## Databricks Genie Agent
 
