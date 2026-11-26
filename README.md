@@ -1,14 +1,12 @@
-# E-commerce Data Analytics - Portfolio
+# E-commerce Data Analytics – Portfolio
 
 ## About the Project
 
 End-to-end data analytics project focused on e-commerce sales, customer behavior, and business performance.
 
-The project demonstrates a complete analytics workflow, from raw data ingestion and data transformation to SQL and Python analysis, business dashboards, and AI-powered analytics.
+The project demonstrates an analytics workflow, from raw data ingestion and data transformation to SQL and Python analysis, business intelligence dashboards, and AI-powered analytics.
 
 > **Language note:** The project documentation is written in English, while the dataset, table names, column names, and business terminology are in Portuguese. This reflects the original data context and does not affect the analysis.
-
----
 
 ## Project Overview
 
@@ -26,7 +24,6 @@ The project covers:
 - Business intelligence dashboards
 - KPI analysis
 - AI-powered analytics with Databricks Genie
-
 
 ## Project Structure
 
@@ -51,23 +48,11 @@ The project is organized into the following stages:
    - Management-level view of business performance and key indicators.
 
 7. **E-commerce BI – Genie Agent**
-   - AI-powered analytics using Databricks Genie.
----
-
-## Technologies
-
-- Databricks
-- SQL
-- Python
-- PySpark
-- Data Visualization
-- Databricks Genie
-
----
+   - AI-powered analytics using Databricks Genie. The agent was created in the Databricks workspace; its configuration is not currently included in this repository.
 
 ## Data Architecture
 
-The project follows a Medallion Architecture:
+The project follows the Medallion Architecture:
 
 ### Bronze
 
@@ -81,20 +66,6 @@ Data cleaning, transformation, validation, and preparation for analysis.
 
 Business-ready datasets designed for analytical queries, KPIs, dashboards, and decision-making.
 
----
-
-## Technologies
-
-- Databricks
-- SQL
-- Python
-- PySpark
-- Data Visualization
-- Business Intelligence
-- Databricks Genie
-
----
-
 ## Data Sources
 
 The project works with e-commerce datasets related to:
@@ -106,7 +77,46 @@ The project works with e-commerce datasets related to:
 
 These datasets are transformed through the Bronze, Silver, and Gold layers before being used for analysis.
 
----
+## Technologies
+
+- Databricks
+- SQL
+- Python
+- PySpark
+- Data Visualization
+- Business Intelligence
+- Databricks Genie
+
+## Business Intelligence Dashboards
+
+The project includes two Databricks dashboards designed for different business needs.
+
+### Commercial Sales Dashboard
+
+Provides a commercial overview through KPIs such as total revenue, sales volume, customer count, and average ticket.
+
+The dashboard also includes:
+
+- Revenue by product category
+- Revenue by sales channel
+- Revenue over time
+- Revenue by state
+- A table of top-performing products
+
+### Sales Management Dashboard
+
+Presents a management-level view of business performance, including total revenue, average ticket, sales volume, and active customers.
+
+The dashboard also includes:
+
+- Revenue evolution over time
+- Revenue by sales channel
+- Revenue by product category
+- Revenue by state
+- Comparison between our prices and competitor prices
+- A product-level table with revenue and quantity
+
+Both dashboards include global filters to support analysis across periods, categories, and states.
 
 ## Business Questions
 
@@ -136,8 +146,6 @@ The analysis explores questions such as:
 - Which KPIs should management monitor?
 - What trends require attention?
 - Which areas represent opportunities for improvement?
-
----
 
 ## Project Workflow
 
