@@ -1,167 +1,82 @@
-# E-commerce Data Analytics – Portfolio
+# E-commerce Data Analytics
 
-## About the Project
+End-to-end analytics project using Databricks to explore e-commerce sales, customer behavior, product performance, and competitor pricing.
 
-End-to-end data analytics project focused on e-commerce sales, customer behavior, and business performance.
+The project follows a Medallion Architecture and combines data transformation, SQL and Python analysis, business intelligence dashboards, and AI-powered analytics.
 
-The project demonstrates an analytics workflow, from raw data ingestion and data transformation to SQL and Python analysis, business intelligence dashboards, and AI-powered analytics.
+> **Language note:** The documentation is in English. The dataset, table names, column names, and business terminology are in Portuguese, reflecting the original data context.
 
-> **Language note:** The project documentation is written in English, while the dataset, table names, column names, and business terminology are in Portuguese. This reflects the original data context and does not affect the analysis.
+## Project Highlights
 
-## Project Overview
+- Data ingestion and transformation using Bronze, Silver, and Gold layers.
+- SQL and Python analysis of sales, customers, and products.
+- Commercial and management dashboards with business KPIs.
+- Databricks Genie agent for AI-powered analytics.
 
-This project was developed to simulate a real-world e-commerce analytics environment.
+## Data Workflow
 
-The main objective is to transform raw business data into actionable insights that can support commercial and management decisions.
+1. **Bronze — Data Ingestion:** Load and organize the original source data.
+2. **Silver — Data Preparation:** Clean, transform, and validate the data.
+3. **Gold — Analytical Data:** Prepare business-ready datasets for analysis and reporting.
+4. **Analysis:** Explore business questions using SQL and Python.
+5. **Business Intelligence:** Present KPIs and trends through Databricks dashboards.
 
-The project covers:
+## Dashboards
 
-- Data ingestion
-- Data cleaning and transformation
-- Data modeling
-- SQL analysis
-- Python analysis
-- Business intelligence dashboards
-- KPI analysis
-- AI-powered analytics with Databricks Genie
+### Commercial Sales Dashboard
 
-## Project Structure
+Provides a commercial view of sales performance, including:
 
-The project is organized into the following stages:
+- Total revenue, sales volume, customer count, and average ticket.
+- Revenue by product category, sales channel, state, and time.
+- Top-performing products by revenue.
 
-1. **Bronze – Data Ingestion**
-   - Raw data ingestion and initial data organization.
+### Sales Management Dashboard
 
-2. **Silver & Gold – Data Transformation**
-   - Data cleaning, transformation, and preparation of business-ready datasets.
+Provides a management-level view of business performance, including:
 
-3. **SQL – E-commerce Analysis**
-   - Business analysis using SQL, including sales, customers, products, and performance metrics.
+- Total revenue, average ticket, sales volume, and active customers.
+- Revenue trends and breakdowns by channel, category, and state.
+- Comparison between our prices and competitor prices.
+- Product-level revenue and quantity.
 
-4. **Python – E-commerce Analysis**
-   - Exploratory data analysis, statistical analysis, and visualizations using Python and PySpark.
+Both dashboards include filters to explore the data across periods, categories, and states.
 
-5. **Commercial Sales Dashboard**
-   - Dashboard focused on sales performance and commercial KPIs.
+## Business Questions
 
-6. **Sales Management Dashboard**
-   - Management-level view of business performance and key indicators.
-
-7. **E-commerce BI – Genie Agent**
-   - AI-powered analytics using Databricks Genie. The agent was created in the Databricks workspace; its configuration is not currently included in this repository.
-
-## Data Architecture
-
-The project follows the Medallion Architecture:
-
-### Bronze
-
-Raw data ingestion with the original source data.
-
-### Silver
-
-Data cleaning, transformation, validation, and preparation for analysis.
-
-### Gold
-
-Business-ready datasets designed for analytical queries, KPIs, dashboards, and decision-making.
+- How does sales performance change over time?
+- Which products and categories generate the most revenue?
+- How does revenue vary by sales channel and state?
+- What customer purchasing patterns can be identified?
+- How do our prices compare with competitor prices?
+- Which KPIs can support commercial and management decisions?
 
 ## Data Sources
 
-The project works with e-commerce datasets related to:
+The project uses e-commerce data related to:
 
 - Sales
 - Products
 - Customers
 - Competitor prices
 
-These datasets are transformed through the Bronze, Silver, and Gold layers before being used for analysis.
+The datasets are processed through the Bronze, Silver, and Gold layers before being used for analysis and dashboards.
 
 ## Technologies
 
-- Databricks
-- SQL
-- Python
-- PySpark
-- Data Visualization
-- Business Intelligence
-- Databricks Genie
+Databricks · SQL · Python · PySpark · Databricks Genie
 
-## Business Intelligence Dashboards
+## Repository Structure
 
-The project includes two Databricks dashboards designed for different business needs.
+The repository contains notebooks for data ingestion, transformation, SQL and Python analysis, and dashboard development.
 
-### Commercial Sales Dashboard
+## Databricks Genie Agent
 
-Provides a commercial overview through KPIs such as total revenue, sales volume, customer count, and average ticket.
+An AI-powered analytics agent was created in the Databricks workspace. Its configuration is not currently included in this GitHub repository.
 
-The dashboard also includes:
+## Project Access
 
-- Revenue by product category
-- Revenue by sales channel
-- Revenue over time
-- Revenue by state
-- A table of top-performing products
+The dashboards are hosted in Databricks and may require workspace access:
 
-### Sales Management Dashboard
-
-Presents a management-level view of business performance, including total revenue, average ticket, sales volume, and active customers.
-
-The dashboard also includes:
-
-- Revenue evolution over time
-- Revenue by sales channel
-- Revenue by product category
-- Revenue by state
-- Comparison between our prices and competitor prices
-- A product-level table with revenue and quantity
-
-Both dashboards include global filters to support analysis across periods, categories, and states.
-
-## Business Questions
-
-The analysis explores questions such as:
-
-### Sales Performance
-
-- How are sales performing over time?
-- Which products generate the highest revenue?
-- Which products contribute most to sales volume?
-- How does sales performance vary across periods?
-
-### Customer Analysis
-
-- What are the main customer purchasing patterns?
-- Which customers or customer groups contribute most to revenue?
-- How does customer behavior affect business performance?
-
-### Product & Competition
-
-- Which products have the strongest commercial performance?
-- How do competitor prices compare with our prices?
-- Are there products that may require pricing or commercial attention?
-
-### Business Performance
-
-- Which KPIs should management monitor?
-- What trends require attention?
-- Which areas represent opportunities for improvement?
-
-## Project Workflow
-
-```text
-Raw Data
-   ↓
-Bronze Layer
-   ↓
-Silver Layer
-   ↓
-Gold Layer
-   ↓
-SQL Analysis
-   ↓
-Python Analysis
-   ↓
-Business Dashboards
-   ↓
-AI-powered Analytics
+- [Commercial Sales Dashboard](https://dbc-7f9e15f9-4844.cloud.databricks.com/dashboardsv3/01f1b86b74561f31b2db21114d95c1d5/published?o=7474644802236927)
+- [Sales Management Dashboard](https://dbc-7f9e15f9-4844.cloud.databricks.com/dashboardsv3/01f1bb542faa1f77a6cdac3f773f8cb1/published?o=7474644802236927)
